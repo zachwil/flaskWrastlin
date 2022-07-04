@@ -6,5 +6,6 @@ app.secret_key ="poopman69"
 
 @app.route("/")
 def hello():
-    return("Welcome to wrastlin, you little bitch!")
+    flash("Welcome to wrastlin, you little bitch! You ready to enter the squared circle or are you a candy-ass jabroni?!")
+    return render_template("index.html")
     
