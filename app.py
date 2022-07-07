@@ -14,8 +14,12 @@ def index():
 
 @app.route("/greet", methods = ["POST", "GET"])
 def promo():
-    flash("THIS IS THE SECOND PAGE NOW, YOU LITTLE BITCH")
-    return render_template("landing.html")
+    bitch_ass_name = request.form.get("bitchName", "").upper()  # empty string is the default
+    message=f"THIS IS THE SECOND PAGE NOW, YOU LITTLE BITCH {bitch_ass_name}"
+    return render_template("landing.html", bitch_message=message)
     #return 'test'
 
-    
+
+# just run 'python app.py' to run this way
+if __name__ == "__main__":
+    app.run(debug=True)
