@@ -1,22 +1,28 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Say Hello</title>
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css')}}">
-        
-    </head>
-    <body>
-        <img src="https://www.biography.com/.image/t_share/MTc5Mzk0NDcxNjk0MTgxNzA5/macho01_ba.jpg">
-        <br>
-        <form action="greet" method="post">
-            <p>{{bitch_message}}</p>
-            <br>
-            <input type="text" placeholder="rock, paper, or scissors" name="rpsPlayerChoice">
-            <br>
-            <input type="submit" value="I'M A BUTTON YOU FUCK" id="greet">
-        
-        </form>
-        
-    </body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Say Hello</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/main.css')}}"
+    />
+  </head>
+  <body>
+    <img
+      src="https://www.biography.com/.image/t_share/MTc5Mzk0NDcxNjk0MTgxNzA5/macho01_ba.jpg"
+    />
+    <br />
+    <form action="greet" method="post">
+      <p>{{bitch_message}}</p>
+      <br />
+      <input
+        type="text"
+        placeholder="rock, paper, or scissors"
+        name="rpsPlayerChoice"
+      />
+      <br />
+      <input type="submit" value="I'M A BUTTON YOU FUCK" id="greet" />
+    </form>
+  </body>
 </html>
