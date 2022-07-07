@@ -10,7 +10,7 @@
     <body>
         <img src="https://www.biography.com/.image/t_share/MTc5Mzk0NDcxNjk0MTgxNzA5/macho01_ba.jpg">
         <br>
-        <form action="greet" method="post">
+        <form action="greet">
             {%for message in get_flashed_messages()%}
                 <p>{{message}}</p>
             {% endfor %}            

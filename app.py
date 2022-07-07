@@ -14,7 +14,6 @@ def index():
 #@app.route("/promo", methods = ["POST", "GET"])
 
 
-@app.route("/greet", methods = ["POST", "GET"])
 def get_computer_move():
     options = ["rock", "paper", "scissors"]
     return options[random.randint(0,2)]
@@ -34,13 +33,24 @@ def get_winner(player_choice, computer_choice):
     return winner
 
 
-
+@app.route("/greet", methods = ["POST", "GET"])
 def promo():
+    # skip the game if it's a GET request
+    if request.method == "GET":
+        message = "Rock, Paper, or Scissors Jabroni!?"
+        return render_template("landing.html", bitch_message=message)
+
+    # Find the winner
+    player_choice = request.form.get("rpsPlayerChoice", "")  # empty string is the default
+    computer_choice = get_computer_move()
+    winner = get_winner(player_choice, computer_choice)
     
-    
-    
-    player_choice = request.form.get("bitchName", "").upper()  # empty string is the default
-    message=f"Rock, Paper, or Scissors Jabroni!? {player_choice}"
+    # Build the output string
+    message = (
+        "Player Choice: " + player_choice.upper() 
+        + ", Computer Choice: " + computer_choice.upper() 
+        + ", Result: " + winner.upper() + ("" if winner == "tie" else " WINS!!!!")
+    )
     return render_template("landing.html", bitch_message=message)
     
 
