@@ -79,6 +79,8 @@ def api_wrassle():
             "winner": winner,
         }
         return json.dumps(resp)
+    else:
+        return "Invalid content-type, must be application/json", 400
 
 
 # just run 'python app.py' to run this way
