@@ -1,5 +1,6 @@
 # from crypt import methods
-from flask import Flask, render_template, request, flash, redirect, url_for
+import json
+from flask import Flask, render_template, request, flash, redirect, url_for, jsonify
 import random
 
 app = Flask(__name__)
@@ -62,6 +63,20 @@ def promo():
         + ("" if winner == "tie" else " WINS!!!!")
     )
     return render_template("landing.html", bitch_message=message)
+
+
+@app.route("/api", methods=["POST"])
+def api_wrassle():
+    data = json.loads(request.data)
+    player_choice = data["rpsPlayerChoice"]
+    computer_choice = get_computer_move()
+    winner = get_winner(player_choice, computer_choice)
+    resp = {
+        "player_choice": player_choice,
+        "computer_choice": computer_choice,
+        "winner": winner,
+    }
+    return jsonify(resp)
 
 
 # just run 'python app.py' to run this way
