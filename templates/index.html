@@ -1,25 +1,14 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>Say Hello</title>
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='css/main.css')}}"
-    />
-  </head>
-
-  <body>
-    <img
-      src="https://www.biography.com/.image/t_share/MTc5Mzk0NDcxNjk0MTgxNzA5/macho01_ba.jpg"
-    />
-    <br />
-    <form action="greet">
-      {%for message in get_flashed_messages()%}
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+{% set active_page = 'home' %}
+{% block content %}
+  <img src="https://www.biography.com/.image/t_share/MTc5Mzk0NDcxNjk0MTgxNzA5/macho01_ba.jpg"/>
+  <br/>
+  <form action="greet">
+    {%for message in get_flashed_messages()%}
       <p>{{message}}</p>
-      {% endfor %}
-      <br />
-      <input type="submit" value="I'M HERE FOR THE BELT!" id="greet" />
-    </form>
-  </body>
-</html>
+    {% endfor %}
+    <br/>
+    <input type="submit" value="I'M HERE FOR THE BELT!" id="greet"/>
+  </form>
+{% endblock %}

@@ -1,28 +1,21 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>Say Hello</title>
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='css/main.css')}}"
-    />
-  </head>
-  <body>
-    <img
-      src="https://www.biography.com/.image/t_share/MTc5Mzk0NDcxNjk0MTgxNzA5/macho01_ba.jpg"
-    />
-    <br />
-    <form action="greet" method="post">
-      <p>{{bitch_message}}</p>
-      <br />
-      <input
-        type="text"
-        placeholder="rock, paper, or scissors"
-        name="rpsPlayerChoice"
-      />
-      <br />
-      <input type="submit" value="I'M A BUTTON YOU FUCK" id="greet" />
+{% extends 'base.html' %}
+{% block title %}Play{% endblock %}
+{% set active_page = 'play' %}
+{% block content %}
+  <img src="https://www.biography.com/.image/t_share/MTc5Mzk0NDcxNjk0MTgxNzA5/macho01_ba.jpg"/>
+  <br/>
+  <p>{{bitch_message}}</p>
+  <br/>
+
+  <div class="game-choices row justify-content-center">
+    <form action="/greet?player_choice=rock" method="post">
+      <input type="image" src="https://media1.popsugar-assets.com/files/thumbor/fQV14blXlEh5-GohuhnAudI7TG8/fit-in/2048xorig/filters:format_auto-!!-:strip_icc-!!-:watermark-!popsugar-watermark_2x.png,-5,-5,0!-/2017/05/24/652/n/1922398/11ba884859259b36435d63.10345825_edit_img_image_16360412_1495635996/i/Dwayne-Johnson-Posing-Rock-Photos.jpg" alt="Submit"/>
     </form>
-  </body>
-</html>
+    <form action="/greet?player_choice=paper" method="post">
+      <input type="image" src="https://5.imimg.com/data5/HO/JM/HQ/SELLER-81571994/white-art-paper-500x500-500x500.jpg" alt="Submit"/>
+    </form>
+    <form action="/greet?player_choice=scissors" method="post">
+      <input type="image" src="https://imgs.michaels.com/MAM/assets/1/726D45CA1C364650A39CD1B336F03305/img/0B720CDD518C480290463DBEE9FA9EB5/10405225_1.jpg?fit=inside|140:140,https://imgs.michaels.com/MAM/assets/1/726D45CA1C364650A39CD1B336F03305/img/0B720CDD518C480290463DBEE9FA9EB5/10405225_1.jpg?fit=inside|220:220,https://imgs.michaels.com/MAM/assets/1/726D45CA1C364650A39CD1B336F03305/img/0B720CDD518C480290463DBEE9FA9EB5/10405225_1.jpg?fit=inside|540:540" alt="Submit"/>
+    </form>
+  </div>
+{% endblock %}
