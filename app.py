@@ -1,4 +1,6 @@
+import os
 import json
+import webbrowser
 from flask import Flask, render_template, request, flash, redirect, url_for, jsonify
 import random
 
@@ -39,7 +41,7 @@ def get_winner(player_choice, computer_choice):
     return winner
 
 
-@app.route("/greet", methods=["POST", "GET"])
+@app.route("/greet/", methods=["POST", "GET"])
 def promo():
     # skip the game if it's a GET request
     if request.method == "GET":
@@ -47,9 +49,7 @@ def promo():
         return render_template("landing.html", bitch_message=message)
 
     # Find the winner
-    player_choice = request.form.get(
-        "rpsPlayerChoice", ""
-    )  # empty string is the default
+    player_choice = request.args.get("player_choice", "")
     computer_choice = get_computer_move()
     winner = get_winner(player_choice, computer_choice)
 
@@ -97,4 +97,6 @@ def pee_hole_insertion(playerChoice, computerChoice, Winner):
 
 # just run 'python app.py' to run this way
 if __name__ == "__main__":
+    if not os.environ.get("WERKZEUG_RUN_MAIN"):
+        webbrowser.open_new("http://127.0.0.1:5000/")
     app.run(debug=True)

@@ -26,6 +26,29 @@ input {
   font-size: 1.3em;
 }
 
+.game-choices input {
+  width: 200px;
+  height: auto;
+  margin: 20px;
+  border: none;
+  border-radius: 50%;
+  font-family: Helvetica;
+  text-align: center;
+  font-size: 1.3em;
+}
+
+.game-choices input:hover {
+  animation: wiggle 75ms infinite;
+  animation-timing-function: linear;
+}
+
+.game-choices input:focus {
+  animation-name: rotation;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-duration: 0.3s;
+}
+
 input:focus {
   border: solid 5px #00ffce;
   outline: none;
@@ -42,4 +65,38 @@ input:focus {
 #greet:hover {
   background-color: mediumvioletred;
   cursor: pointer;
+}
+
+.content > div {
+  margin: 0;
+}
+
+@keyframes wiggle {
+  0% {
+    transform: translate(8px, 0);
+  }
+  50% {
+    transform: translate(-8px, 0);
+  }
+  100% {
+    transform: translate(8px, 0);
+  }
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate3d(0, 1, 0, 0deg);
+  }
+  25% {
+    transform: rotate3d(0, 1, 0, 90deg);
+  }
+  50% {
+    transform: rotate3d(0, 1, 0, 180deg);
+  }
+  75% {
+    transform: rotate3d(0, 1, 0, 270deg);
+  }
+  100% {
+    transform: rotate3d(0, 1, 0, 360deg);
+  }
 }
